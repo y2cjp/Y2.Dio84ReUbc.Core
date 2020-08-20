@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <Authors>Y2 Corporation</Authors>
+    <Company>Y2 Corporation</Company>
+    <Product>Y2.Dio84ReUbc.Core</Product>
+    <PackageId>Y2.Dio84ReUbc.Core</PackageId>
+    <Copyright>Copyright (C) 2020 Y2 Corporation</Copyright>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <Description>USB2.0 to I2C/IO Board Drivers for DIO-8/4RE-UBC.</Description>
+    <PackageTags>USB, I2C, IO, .NET, Core, FT4222H, IoT</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>y2.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/y2cjp/Y2.Dio84ReUbc.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/y2cjp/Y2.Dio84ReUbc.Core</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="I2cMasterFlag.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Iot.Device.Bindings" Version="1.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Y2.Ft4222.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LibFT4222.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\y2.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
