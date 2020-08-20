@@ -9,8 +9,16 @@ using Y2.Ft4222.Core;
 
 namespace Y2.Dio84ReUbc.Core
 {
+    /// <summary>
+    /// ADS1115
+    /// </summary>
     public class Ads1115Slave : Ft4222I2cSlaveDevice
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ads1115Slave"/> class.
+        /// </summary>
+        /// <param name="i2c">The I2C master device.</param>
+        /// <param name="slaveAddress">The bus address of the I2C device.</param>
         public Ads1115Slave(IFt4222I2cMaster i2c, int slaveAddress)
             : base(i2c, slaveAddress)
         {
@@ -21,18 +29,55 @@ namespace Y2.Dio84ReUbc.Core
                 throw new ArgumentOutOfRangeException(nameof(i2c));
         }
 
+        /// <summary>
+        /// Input multiplexer configuration
+        /// </summary>
         public enum Mux
         {
+            /// <summary>
+            /// AIN0 - AIN1
+            /// </summary>
             Ain0Ain1,
+
+            /// <summary>
+            /// AIN0 - AIN3
+            /// </summary>
             Ain0Ain3,
+
+            /// <summary>
+            /// AIN1 - AIN3
+            /// </summary>
             Ain1Ain3,
+
+            /// <summary>
+            /// AIN2 - AIN3
+            /// </summary>
             Ain2Ain3,
+
+            /// <summary>
+            /// AIN0 - GND
+            /// </summary>
             Ain0Gnd,
+
+            /// <summary>
+            /// AIN1 - GND
+            /// </summary>
             Ain1Gnd,
+
+            /// <summary>
+            /// AIN2 - GND
+            /// </summary>
             Ain2Gnd,
+
+            /// <summary>
+            /// AIN3 - GND
+            /// </summary>
             Ain3Gnd
         }
 
+        /// <summary>
+        /// Programmable gain amplifier configuration
+        /// </summary>
         public enum Pga
         {
             /// <summary>
@@ -66,15 +111,49 @@ namespace Y2.Dio84ReUbc.Core
             Fs256mV
         }
 
+        /// <summary>
+        /// Control the data rate setting.
+        /// </summary>
         public enum DataRate
         {
+            /// <summary>
+            /// 8SPS
+            /// </summary>
             Sps8,
+
+            /// <summary>
+            /// 16SPS
+            /// </summary>
             Sps16,
+
+            /// <summary>
+            /// 32SPS
+            /// </summary>
             Sps32,
+
+            /// <summary>
+            /// 64SPS
+            /// </summary>
             Sps64,
-            Sps128,  // Default
+
+            /// <summary>
+            /// 128SPS, Default
+            /// </summary>
+            Sps128,
+
+            /// <summary>
+            /// 250SPS
+            /// </summary>
             Sps250,
+
+            /// <summary>
+            /// 475SPS
+            /// </summary>
             Sps475,
+
+            /// <summary>
+            /// 860SPS
+            /// </summary>
             Sps860
         }
 
@@ -103,6 +182,13 @@ namespace Y2.Dio84ReUbc.Core
             Disable = 0x03
         }
 
+        /// <summary>
+        /// アナログ値（バイナリ）を取得する。
+        /// </summary>
+        /// <param name="mux">入力マルチプレクサ</param>
+        /// <param name="dataRate">データーレート</param>
+        /// <param name="pga">ゲイン</param>
+        /// <returns>アナログ値（バイナリ）</returns>
         public int ReadRaw(Mux mux, DataRate dataRate = DataRate.Sps128, Pga pga = Pga.Fs2048mV)
         {
             ReadOnlySpan<byte> config = stackalloc byte[]

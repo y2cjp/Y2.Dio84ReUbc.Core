@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Y2.Dio84ReUbc.Core
 {
+    /// <summary>
+    /// Interface for a AIO-32/0RA-IRC
+    /// </summary>
     public interface IAio320
     {
         /// <summary>
