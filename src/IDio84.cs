@@ -4,6 +4,9 @@
 
 namespace Y2.Dio84ReUbc.Core
 {
+    /// <summary>
+    /// Interface for a DIO-8/4RD-IRC
+    /// </summary>
     public interface IDio84
     {
         /// <summary>
@@ -17,27 +20,27 @@ namespace Y2.Dio84ReUbc.Core
         void Initialize();
 
         /// <summary>
-        /// ひとつのピンの状態を読み出す。
+        /// ピンの状態を読み出す。
         /// </summary>
         /// <param name="pin">ピン番号</param>
         /// <returns>ピンの状態</returns>
         PinState ReadPin(int pin);
 
         /// <summary>
-        /// ひとつのポート（8ビット）の状態を読み出す。
+        /// ポート（8ビット）の状態を読み出す。
         /// </summary>
         /// <returns>ポートの状態</returns>
         byte ReadPort();
 
         /// <summary>
-        /// ひとつのピンに出力をする。
+        /// ピンに出力をする。
         /// </summary>
         /// <param name="pin">ピン番号</param>
         /// <param name="pinState">出力値</param>
         void WritePin(int pin, PinState pinState);
 
         /// <summary>
-        /// ひとつのポート（8ビット）に出力をする
+        /// ポート（8ビット）に出力をする
         /// </summary>
         /// <param name="value">出力値</param>
         void WritePort(byte value);

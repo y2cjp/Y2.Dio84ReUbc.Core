@@ -1,0 +1,726 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Y2.Dio84ReUbc.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Y2.Dio84ReUbc.Core.Ads1115Slave">
+            <summary>
+            ADS1115
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Ads1115Slave.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Ads1115Slave"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="slaveAddress">The bus address of the I2C device.</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux">
+            <summary>
+            Input multiplexer configuration
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain0Ain1">
+            <summary>
+            AIN0 - AIN1
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain0Ain3">
+            <summary>
+            AIN0 - AIN3
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain1Ain3">
+            <summary>
+            AIN1 - AIN3
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain2Ain3">
+            <summary>
+            AIN2 - AIN3
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain0Gnd">
+            <summary>
+            AIN0 - GND
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain1Gnd">
+            <summary>
+            AIN1 - GND
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain2Gnd">
+            <summary>
+            AIN2 - GND
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Mux.Ain3Gnd">
+            <summary>
+            AIN3 - GND
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga">
+            <summary>
+            Programmable gain amplifier configuration
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs6144mV">
+            <summary>
+            Full Scale: 6.144V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs4096mV">
+            <summary>
+            Full Scale: 4.096V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs2048mV">
+            <summary>
+            Full Scale: 2.048V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs1024mV">
+            <summary>
+            Full Scale: 1.024V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs512mV">
+            <summary>
+            Full Scale: 0.512V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.Pga.Fs256mV">
+            <summary>
+            Full Scale: 0.256V
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate">
+            <summary>
+            Control the data rate setting.
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps8">
+            <summary>
+            8SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps16">
+            <summary>
+            16SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps32">
+            <summary>
+            32SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps64">
+            <summary>
+            64SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps128">
+            <summary>
+            128SPS, Default
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps250">
+            <summary>
+            250SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps475">
+            <summary>
+            475SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate.Sps860">
+            <summary>
+            860SPS
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Ads1115Slave.ReadRaw(Y2.Dio84ReUbc.Core.Ads1115Slave.Mux,Y2.Dio84ReUbc.Core.Ads1115Slave.DataRate,Y2.Dio84ReUbc.Core.Ads1115Slave.Pga)">
+            <summary>
+            アナログ値（バイナリ）を取得する。
+            </summary>
+            <param name="mux">入力マルチプレクサ</param>
+            <param name="dataRate">データーレート</param>
+            <param name="pga">ゲイン</param>
+            <returns>アナログ値（バイナリ）</returns>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Aio320">
+            <summary>
+            AIO-32/0RA-IRC
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Aio320.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Aio320"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="adcAddress">The bus address of the ADC device.</param>
+            <param name="muxAddress">The bus address of the Multiplexer device.</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Aio320.Pga">
+            <summary>
+            ゲイン
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.Pga.Fs10035mV">
+            <summary>
+            Full Scale: 10.0352V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.Pga.Fs5018mV">
+            <summary>
+            Full Scale: 5.0176V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.Pga.Fs2509mV">
+            <summary>
+            Full Scale: 2.5088V
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.Pga.Fs1254mV">
+            <summary>
+            Full Scale: 1.2544V
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Aio320.DataRate">
+            <summary>
+            データレート
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps8">
+            <summary>
+            8SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps16">
+            <summary>
+            16SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps32">
+            <summary>
+            32SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps64">
+            <summary>
+            64SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps128">
+            <summary>
+            128SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps250">
+            <summary>
+            250SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps475">
+            <summary>
+            475SPS
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Aio320.DataRate.Sps860">
+            <summary>
+            860SPS
+            </summary>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.Aio320.IsInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Aio320.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Aio320.ReadRaw(System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Aio320.ReadRaw(System.Int32,System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Aio320.ReadVoltage(System.Int32,System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Dio016">
+            <summary>
+            DIO-0/16RC-IRC
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Dio016"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="slaveAddress">The bus address of the I2C device.</param>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.Dio016.IsInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.ReadRegister(Y2.Dio84ReUbc.Core.Pca9535.Register,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.WriteAll(System.UInt32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.WritePort(System.Int32,System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio016.WritePin(System.Int32,Y2.Dio84ReUbc.Core.PinState)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.PinState">
+            <summary>
+            ピンの状態
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.PinState.Off">
+            <summary>
+            Off
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.PinState.On">
+            <summary>
+            On
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Dio84">
+            <summary>
+            DIO-84RD-IRC
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Dio84"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="slaveAddress">The bus address of the I2C device.</param>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.Dio84.IsInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.ReadPort">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.ReadPin(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.WritePort(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.WritePin(System.Int32,Y2.Dio84ReUbc.Core.PinState)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84.SetMikroBusResetPin(Y2.Dio84ReUbc.Core.PinState)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Dio84Re">
+            <summary>
+            DIO-8/4RE-UBC
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.#ctor(System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Dio84Re"/> class.
+            </summary>
+            <param name="i2cFrequencyKbps">The speed of I2C transmission.</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.#ctor(System.Int32,System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Dio84Re"/> class.
+            </summary>
+            <param name="deviceAddress">The bus address of the I2C device.</param>
+            <param name="i2cFrequencyKbps">The speed of I2C transmission.</param>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.Dio84Re.IsInitialized">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.ReadPort">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.ReadPin(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.WritePort(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.WritePin(System.Int32,Y2.Dio84ReUbc.Core.PinState)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Dio84Re.SetMikroBusResetPin(Y2.Dio84ReUbc.Core.PinState)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.IAio320">
+            <summary>
+            Interface for a AIO-32/0RA-IRC
+            </summary>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.IAio320.IsInitialized">
+            <summary>
+            初期化済みか？
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IAio320.Initialize">
+            <summary>
+            初期化をする。
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IAio320.ReadRaw(System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <summary>
+            アナログ値（バイナリ）を取得する。
+            </summary>
+            <param name="channel">チャネル</param>
+            <param name="dataRate">データーレート</param>
+            <param name="pga">ゲイン</param>
+            <returns>アナログ値（バイナリ）</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IAio320.ReadRaw(System.Int32,System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <summary>
+            複数のアナログ値（バイナリ）を取得する。
+            </summary>
+            <param name="startChannel">開始チャネル</param>
+            <param name="numOfChannels">チャネル数</param>
+            <param name="dataRate">データレート</param>
+            <param name="pga">ゲイン</param>
+            <returns>複数のアナログ値（バイナリ）</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IAio320.ReadVoltage(System.Int32,System.Int32,Y2.Dio84ReUbc.Core.Aio320.DataRate,Y2.Dio84ReUbc.Core.Aio320.Pga)">
+            <summary>
+            複数のアナログ値（電圧）を取得する。
+            </summary>
+            <param name="startChannel">開始チャネル</param>
+            <param name="numOfChannels">チャネル数</param>
+            <param name="dataRate">データレート</param>
+            <param name="pga">ゲイン</param>
+            <returns>複数のアナログ値（電圧）</returns>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.IDio016">
+            <summary>
+            Interface for a DIO-0/16RC-IRC
+            </summary>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.IDio016.IsInitialized">
+            <summary>
+            初期化済みか？
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio016.Initialize">
+            <summary>
+            初期化をする。
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio016.WriteAll(System.UInt32)">
+            <summary>
+            全てのピンに出力をする。
+            </summary>
+            <param name="value">出力値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio016.WritePin(System.Int32,Y2.Dio84ReUbc.Core.PinState)">
+            <summary>
+            ピンに出力をする。
+            </summary>
+            <param name="pin">ピン番号</param>
+            <param name="pinState">出力値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio016.WritePort(System.Int32,System.Byte)">
+            <summary>
+            ポート（8ビット）に出力をする
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="value">出力値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio016.ReadRegister(Y2.Dio84ReUbc.Core.Pca9535.Register,System.Int32)">
+            <summary>
+            レジスタを読み出す。
+            </summary>
+            <param name="pca9535Register">レジスタ</param>
+            <param name="numOfRegisters">読み出すレジスタの数</param>
+            <returns>読み出した値</returns>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.IDio84">
+            <summary>
+            Interface for a DIO-8/4RD-IRC
+            </summary>
+        </member>
+        <member name="P:Y2.Dio84ReUbc.Core.IDio84.IsInitialized">
+            <summary>
+            初期化済みか？
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.Initialize">
+            <summary>
+            初期化をする。
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.ReadPin(System.Int32)">
+            <summary>
+            ピンの状態を読み出す。
+            </summary>
+            <param name="pin">ピン番号</param>
+            <returns>ピンの状態</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.ReadPort">
+            <summary>
+            ポート（8ビット）の状態を読み出す。
+            </summary>
+            <returns>ポートの状態</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.WritePin(System.Int32,Y2.Dio84ReUbc.Core.PinState)">
+            <summary>
+            ピンに出力をする。
+            </summary>
+            <param name="pin">ピン番号</param>
+            <param name="pinState">出力値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.WritePort(System.Byte)">
+            <summary>
+            ポート（8ビット）に出力をする
+            </summary>
+            <param name="value">出力値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.IDio84.SetMikroBusResetPin(Y2.Dio84ReUbc.Core.PinState)">
+            <summary>
+            MikroBusのリセットピンを制御する。
+            </summary>
+            <param name="pinState">出力値</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.IDio84Re">
+            <summary>
+            Interface for a DIO-8/4RE-UBC
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9535">
+            <summary>
+            PCA9535
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Pca9535"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="slaveAddress">The bus address of the I2C device.</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9535.Register">
+            <summary>
+            レジスタ
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.Register.InputPort0">
+            <summary>
+            Input Port 0
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.Register.OutputPort0">
+            <summary>
+            Output Port 0
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.Register.PolarityInversion0">
+            <summary>
+            Polarity Inversion 0
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.Register.IoConfiguration0">
+            <summary>
+            IO Configuration 0
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9535.PinDirection">
+            <summary>
+            入出力方向
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.PinDirection.Output">
+            <summary>
+            出力
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9535.PinDirection.Input">
+            <summary>
+            入力
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.SetPortDirection(System.Int32,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            複数のポートの入出力方向を設定
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="values">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.SetPortDirection(System.Int32,System.Byte)">
+            <summary>
+            ポートの入出力方向を設定
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="value">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.SetPinDirection(System.Int32,System.Int32,Y2.Dio84ReUbc.Core.Pca9535.PinDirection)">
+            <summary>
+            ピンの入出力方向を設定
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="pin">ピン番号</param>
+            <param name="pinDirection">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.ReadRegister(Y2.Dio84ReUbc.Core.Pca9535.Register,System.Int32)">
+            <summary>
+            レジスタの読み出し
+            </summary>
+            <param name="pca9535Register">レジスタ</param>
+            <param name="numOfPort">読み出すレジスタ数</param>
+            <returns>読み出された値</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.ReadPort(System.Int32)">
+            <summary>
+            ポートの読み出し
+            </summary>
+            <param name="port">ポート番号</param>
+            <returns>読み出された値</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.ReadPort(System.Int32,System.Int32)">
+            <summary>
+            複数ポートの読み出し
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="numOfPort">読み出すポートの数</param>
+            <returns>読み出された値</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.ReadPin(System.Int32,System.Int32)">
+            <summary>
+            ピンの状態の読み出し
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="pin">ピン番号</param>
+            <returns>ピンの状態</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.WritePort(System.Int32,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            複数ポートの制御
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="values">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.WritePort(System.Int32,System.Byte)">
+            <summary>
+            ポートの制御
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="value">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9535.WritePin(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            ピンの制御
+            </summary>
+            <param name="port">ポート番号</param>
+            <param name="pin">ピン番号</param>
+            <param name="state">設定値</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9554">
+            <summary>
+            PCA9554
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.#ctor(Y2.Ft4222.Core.IFt4222I2cMaster,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Y2.Dio84ReUbc.Core.Pca9554"/> class.
+            </summary>
+            <param name="i2c">The I2C master device.</param>
+            <param name="slaveAddress">The bus address of the I2C device.</param>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9554.Register">
+            <summary>
+            レジスタ
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.Register.InputPort">
+            <summary>
+            Input Port
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.Register.OutputPort">
+            <summary>
+            Output Port
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.Register.PolarityInversion">
+            <summary>
+            Polarity Inversion
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.Register.IoConfiguration">
+            <summary>
+            IO Configutation
+            </summary>
+        </member>
+        <member name="T:Y2.Dio84ReUbc.Core.Pca9554.PinDirection">
+            <summary>
+            入出力方向
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.PinDirection.Output">
+            <summary>
+            出力
+            </summary>
+        </member>
+        <member name="F:Y2.Dio84ReUbc.Core.Pca9554.PinDirection.Input">
+            <summary>
+            入力
+            </summary>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.SetPortDirection(System.Byte)">
+            <summary>
+            ポートの入出力方向を設定
+            </summary>
+            <param name="value">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.SetPinDirection(System.Int32,Y2.Dio84ReUbc.Core.Pca9554.PinDirection)">
+            <summary>
+            ピンの入出力方向を設定
+            </summary>
+            <param name="pin">ピン番号</param>
+            <param name="pinDirection">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.ReadPort">
+            <summary>
+            ポートの読み出し
+            </summary>
+            <returns>読み出された値</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.ReadPin(System.Int32)">
+            <summary>
+            ピンの状態の読み出し
+            </summary>
+            <param name="pin">ピン番号</param>
+            <returns>ピンの状態</returns>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.WritePort(System.Byte)">
+            <summary>
+            ポートの制御
+            </summary>
+            <param name="value">設定値</param>
+        </member>
+        <member name="M:Y2.Dio84ReUbc.Core.Pca9554.WritePin(System.Int32,System.Boolean)">
+            <summary>
+            ピンの制御
+            </summary>
+            <param name="pin">ピン番号</param>
+            <param name="state">設定値</param>
+        </member>
+    </members>
+</doc>

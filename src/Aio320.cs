@@ -10,12 +10,21 @@ using Y2.Ft4222.Core;
 
 namespace Y2.Dio84ReUbc.Core
 {
+    /// <summary>
+    /// AIO-32/0RA-IRC
+    /// </summary>
     public sealed class Aio320 : IAio320
     {
         private readonly Pca9554 _pca9554;      // Multiplexer
         private readonly Ads1115Slave _ads1115; // ADC
         private byte _mux;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Aio320"/> class.
+        /// </summary>
+        /// <param name="i2c">The I2C master device.</param>
+        /// <param name="adcAddress">The bus address of the ADC device.</param>
+        /// <param name="muxAddress">The bus address of the Multiplexer device.</param>
         public Aio320(IFt4222I2cMaster i2c, int adcAddress = 0x49, int muxAddress = 0x3e)
         {
             _pca9554 = new Pca9554(i2c, muxAddress);
@@ -23,6 +32,9 @@ namespace Y2.Dio84ReUbc.Core
             _mux = 0xff;
         }
 
+        /// <summary>
+        /// ゲイン
+        /// </summary>
         public enum Pga
         {
             /// <summary>
@@ -46,26 +58,63 @@ namespace Y2.Dio84ReUbc.Core
             Fs1254mV = Ads1115Slave.Pga.Fs256mV
         }
 
+        /// <summary>
+        /// データレート
+        /// </summary>
         public enum DataRate
         {
+            /// <summary>
+            /// 8SPS
+            /// </summary>
             Sps8 = Ads1115Slave.DataRate.Sps8,
+
+            /// <summary>
+            /// 16SPS
+            /// </summary>
             Sps16 = Ads1115Slave.DataRate.Sps16,
+
+            /// <summary>
+            /// 32SPS
+            /// </summary>
             Sps32 = Ads1115Slave.DataRate.Sps32,
+
+            /// <summary>
+            /// 64SPS
+            /// </summary>
             Sps64 = Ads1115Slave.DataRate.Sps64,
+
+            /// <summary>
+            /// 128SPS
+            /// </summary>
             Sps128 = Ads1115Slave.DataRate.Sps128,
+
+            /// <summary>
+            /// 250SPS
+            /// </summary>
             Sps250 = Ads1115Slave.DataRate.Sps250,
+
+            /// <summary>
+            /// 475SPS
+            /// </summary>
             Sps475 = Ads1115Slave.DataRate.Sps475,
+
+            /// <summary>
+            /// 860SPS
+            /// </summary>
             Sps860 = Ads1115Slave.DataRate.Sps860
         }
 
+        /// <inheritdoc/>
         public bool IsInitialized { get; private set; }
 
+        /// <inheritdoc/>
         public void Initialize()
         {
             _pca9554.SetPortDirection(0x00);
             IsInitialized = true;
         }
 
+        /// <inheritdoc/>
         public int ReadRaw(int channel, DataRate dataRate = DataRate.Sps128, Pga pga = Pga.Fs10035mV)
         {
             if (!IsInitialized)
@@ -109,6 +158,7 @@ namespace Y2.Dio84ReUbc.Core
             return _ads1115.ReadRaw(adcMux, (Ads1115Slave.DataRate)dataRate, (Ads1115Slave.Pga)pga);
         }
 
+        /// <inheritdoc/>
         public List<int> ReadRaw(int startChannel, int numOfChannels, DataRate dataRate = DataRate.Sps128, Pga pga = Pga.Fs10035mV)
         {
             var values = new List<int>();
@@ -121,6 +171,7 @@ namespace Y2.Dio84ReUbc.Core
             return values;
         }
 
+        /// <inheritdoc/>
         public List<double> ReadVoltage(int startChannel, int numOfChannels, DataRate dataRate = DataRate.Sps128, Pga pga = Pga.Fs10035mV)
         {
             return ReadRaw(startChannel, numOfChannels, dataRate, pga).Select(x => ToVolt(x, pga)).ToList();
