@@ -1,60 +1,71 @@
-# USB-I2C変換ボード DIO-8/4RE-UBC用ドライバ
+# USB-I2C変換ボード（絶縁デジタル入出力付） DIO-8/4RE-UBC用ドライバ
 
 [USB-I2C変換ボード（絶縁デジタル入出力付） DIO-8/4RE-UBC](https://www.y2c.co.jp/i2c-r/dio-8-4re-ubc/) を制御する為のドライバです。  
-Windows・Linux・MacOSで使用できます。 
+Windows・Linux・Mac で使用できます。 
 
-## セットアップ方法
+## セットアップ
 
-Visual StudioのNuGetパッケージマネージャー または [NuGet.org](https://www.nuget.org/) から「Y2.Dio84ReUbc.Core」を検索してインストールしてください。  
-* [NuGet.orgのY2.Dio84ReUbc.Coreページ](https://www.nuget.org/packages/Y2.Dio84ReUbc.Core/)  
+1. Visual Studioで、プロジェクトを新規作成するか既存のプロジェクトを開きます。  
+（.NET Coreに対応したプロジェクト）
 
-FTDI社のライブラリ（デバイスドライバ含む）のインストールも必要ですので、以下の各OSの手順にしたがってインストールしてください。
+2. NuGetパッケージの「Y2.Dio84ReUbc.Core」をインストールします。  
 
-Windows 64bit
+    * ソリューションエクスプローラーからプロジェクトを右クリックして「NuGetパッケージの管理」をクリックします。  
+    * タブを「参照」にして、パッケージソースを「nuget.org」にします。  
+    * 検索窓に「Y2.Dio」を入力すると「Y2.Dio84ReUbc.Core」が見つかりますので選択します。  
+    * バージョンは「最新の安定版」にして「インストール」をクリックします。
 
-1. [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library」をダウンロードして解凍します。  
-2. ```LibFT4222-vx.x.x\imports\LibFT4222\lib\amd64\LibFT4222-64.dll```をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
-3. ```LibFT4222-64.dll```を```LibFT4222.dll```に名前を変更します。  
+    ![Y2.Dio84ReUbc.Coreのインストール画面](nuget.png)
 
-（レジストリ登録やPATHで登録しても可）
+3. FTDI社のライブラリ（デバイスドライバ含む）を以下の各OSの手順にしたがってインストールします。
 
-Windows 32bit
+    （本製品は、USB-I2C変換にFTDI社のデバイス（FT4222H）を使用しているため必要です）  
 
-1. [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library and Examples」をダウンロードして解凍します。  
-2. ```LibFT4222-vx.x.x\imports\LibFT4222\lib\i386\LibFT4222.dll```をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
+    Windows 64bit
 
-（レジストリ登録やPATHで登録しても可）
+    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library」をダウンロードして解凍します。  
+    * ```LibFT4222-vx.x.x\imports\LibFT4222\lib\amd64\LibFT4222-64.dll``` をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
+    * ```LibFT4222-64.dll``` を ```LibFT4222.dll``` に名前を変更します。  
 
-Linux
+    （レジストリ登録やPATHで登録しても可）
 
-1. [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Linux Library and Examples」をダウンロードして解凍します。  
-2. 管理者権限で```install4222.sh```を実行します。  
+    Windows 32bit
 
-MAC OSX
+    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library and Examples」をダウンロードして解凍します。  
+    * ```LibFT4222-vx.x.x\imports\LibFT4222\lib\i386\LibFT4222.dll``` をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
 
-1. [D2XX Driversのダウンロード](https://www.ftdichip.com/Drivers/D2XX.htm) から```libftd2xx.dylib```をダウンロードして解凍します。  
-2. [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 MAC OSX Library and Examples」をダウンロードして解凍します。  
-3. ターミナルで以下のコマンドを実行します。  
+    （レジストリ登録やPATHで登録しても可）
 
-```bash
-# /usr/local/libディレクトリがなければ作成
-$ sudo mkdir /usr/local/lib
-# /usr/local/includeディレクトリがなければ作成
-$ sudo mkdir /usr/local/include
-# libftd2xx.1.4.16.dylibが解凍されたパスに移動してから
-# ファイルをコピー
-$ sudo cp libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.1.4.16.dylib
-# シンボリックリンクを作成
-$ sudo ln -sf /usr/local/lib/libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.dylib
-# libft4222.1.4.4.14.dylibが解凍されたパスに移動してから
-# ファイルをコピー
-$ sudo cp libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.1.4.4.14.dylib
-# シンボリックリンクを作成
-$ sudo ln -sf /usr/local/lib/libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.dylib
-# ファイルをコピー
-$ sudo cp boost_libs/libboost_system.dylib /usr/local/lib/libboost_system.dylib
-$ sudo cp boost_libs/libboost_thread-mt.dylib /usr/local/lib/libboost_thread-mt.dylib
-```
+    Linux
+
+    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Linux Library and Examples」をダウンロードして解凍します。  
+    * 管理者権限で ```install4222.sh``` を実行します。  
+
+    Mac
+
+    * [D2XX Driversのダウンロード](https://www.ftdichip.com/Drivers/D2XX.htm) から ```libftd2xx.dylib``` をダウンロードして解凍します。  
+    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 MAC OSX Library and Examples」をダウンロードして解凍します。  
+    * ターミナルで以下のコマンドを実行します。  
+
+        ```bash
+        # /usr/local/libディレクトリがなければ作成
+        $ sudo mkdir /usr/local/lib
+        # /usr/local/includeディレクトリがなければ作成
+        $ sudo mkdir /usr/local/include
+        # libftd2xx.1.4.16.dylibが解凍されたパスに移動してから
+        # ファイルをコピー
+        $ sudo cp libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.1.4.16.dylib
+        # シンボリックリンクを作成
+        $ sudo ln -sf /usr/local/lib/libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.dylib
+        # libft4222.1.4.4.14.dylibが解凍されたパスに移動してから
+        # ファイルをコピー
+        $ sudo cp libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.1.4.4.14.dylib
+        # シンボリックリンクを作成
+        $ sudo ln -sf /usr/local/lib/libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.dylib
+        # ファイルをコピー
+        $ sudo cp boost_libs/libboost_system.dylib /usr/local/lib/libboost_system.dylib
+        $ sudo cp boost_libs/libboost_thread-mt.dylib /usr/local/lib/libboost_thread-mt.dylib
+        ```
 
 ## 使用方法
 
@@ -110,6 +121,15 @@ Console.WriteLine($"Firmware version: {bno055Sensor.Info.FirmwareVersion}, Bootl
 Console.WriteLine($"Temperature source: {bno055Sensor.TemperatureSource}, Operation mode: {bno055Sensor.OperationMode}, Units: {bno055Sensor.Units}");
 Console.WriteLine($"Powermode: {bno055Sensor.PowerMode}");
 ```
+
+## 使用例
+
+* [DIO-8/4RE-UBCの使用方法（Windows）](https://www.y2c.co.jp/i2c-r/dio-8-4re-ubc/netcore/)  
+* アナログ入力32点を増設する → [AIO-32/0RA-IRCの使用例へ](https://www.y2c.co.jp/i2c-r/aio-32-0ra-irc/windows/)  
+* 絶縁デジタル出力16点を増設する → [DIO-0/16RC-IRCの使用例へ](https://www.y2c.co.jp/i2c-r/dio-0-16rc-irc/windows/)  
+* 絶縁デジタル入力8点・絶縁デジタル出力4点を増設する → [DIO-8/4RD-IRCの使用例へ](https://www.y2c.co.jp/i2c-r/dio-8-4rd-irc/windows/)  
+* [DCモーターを制御する](https://www.y2c.co.jp/i2c-r/dio-8-4re-ubc/adafruit2348/)  
+* [OLEDディスプレイを制御する](https://www.y2c.co.jp/i2c-r/dio-8-4re-ubc/mikroe1649/)  
 
 ## 関連プロジェクト
 
