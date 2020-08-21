@@ -3,7 +3,6 @@
 // Copyright (c) Y2 Corporation
 
 using System;
-using Iot.Device.Ft4222;
 using Y2.Ft4222.Core;
 
 namespace Y2.Dio84ReUbc.Core
@@ -158,9 +157,9 @@ namespace Y2.Dio84ReUbc.Core
         private byte ReadRegister(Register pca9554Register)
         {
             ReadOnlySpan<byte> writeBuffer = stackalloc byte[] { (byte)pca9554Register };
-            WriteEx(I2cMasterFlag.Start, writeBuffer);
+            WriteEx(I2cMasterFlags.Start, writeBuffer);
             Span<byte> value = stackalloc byte[1];
-            ReadEx(I2cMasterFlag.RepeatedStart | I2cMasterFlag.Stop, value);
+            ReadEx(I2cMasterFlags.RepeatedStart | I2cMasterFlags.Stop, value);
             return value[0];
         }
     }

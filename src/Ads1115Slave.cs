@@ -4,7 +4,6 @@
 
 using System;
 using System.Threading;
-using Iot.Device.Ft4222;
 using Y2.Ft4222.Core;
 
 namespace Y2.Dio84ReUbc.Core
@@ -199,7 +198,7 @@ namespace Y2.Dio84ReUbc.Core
             };
             Write(config);
             ReadOnlySpan<byte> conversion = stackalloc byte[] { (byte)Register.Conversion };
-            WriteEx(I2cMasterFlag.Start, conversion);
+            WriteEx(I2cMasterFlags.Start, conversion);
             switch (dataRate)
             {
                 case DataRate.Sps8:
@@ -231,7 +230,7 @@ namespace Y2.Dio84ReUbc.Core
             }
 
             Span<byte> readBuffer = stackalloc byte[2];
-            ReadEx(I2cMasterFlag.RepeatedStart | I2cMasterFlag.Stop, readBuffer);
+            ReadEx(I2cMasterFlags.RepeatedStart | I2cMasterFlags.Stop, readBuffer);
             return (short)((readBuffer[0] << 8) | readBuffer[1]);
         }
     }

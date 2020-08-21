@@ -3,7 +3,6 @@
 // Copyright (c) Y2 Corporation
 
 using System;
-using Iot.Device.Ft4222;
 using Y2.Ft4222.Core;
 
 namespace Y2.Dio84ReUbc.Core
@@ -142,9 +141,9 @@ namespace Y2.Dio84ReUbc.Core
         public byte[] ReadRegister(Register pca9535Register, int numOfPort)
         {
             ReadOnlySpan<byte> writeBuffer = stackalloc byte[] { (byte)pca9535Register };
-            WriteEx(I2cMasterFlag.Start, writeBuffer);
+            WriteEx(I2cMasterFlags.Start, writeBuffer);
             Span<byte> buffer = stackalloc byte[numOfPort];
-            ReadEx(I2cMasterFlag.RepeatedStart | I2cMasterFlag.Stop, buffer);
+            ReadEx(I2cMasterFlags.RepeatedStart | I2cMasterFlags.Stop, buffer);
             return buffer.ToArray();
         }
 
