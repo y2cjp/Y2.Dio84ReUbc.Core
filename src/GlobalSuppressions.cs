@@ -5,9 +5,9 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("StyleCop.CSharp.NamingRules", "SA1312:Variable names should begin with lower-case letter", Justification = "<保留中>", Scope = "member", Target = "Y2.Dio84ReUbc.Core.Dio016.Initialize")]
-[assembly: SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces", Justification = "<保留中>", Scope = "type", Target = "Y2.Dio84ReUbc.Core.Pca9535")]
-[assembly: SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces", Justification = "<保留中>", Scope = "type", Target = "Y2.Dio84ReUbc.Core.Pca9554")]
+[assembly: SuppressMessage("StyleCop.CSharp.NamingRules", "SA1312:Variable names should begin with lower-case letter", Justification = "<保留中>", Scope = "member", Target = "~M:Y2.Dio84ReUbc.Core.Dio016.Initialize")]
+[assembly: SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces", Justification = "<保留中>", Scope = "type", Target = "~T:Y2.Dio84ReUbc.Core.Pca9535")]
+[assembly: SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces", Justification = "<保留中>", Scope = "type", Target = "~T:Y2.Dio84ReUbc.Core.Pca9554")]
 
 [assembly: SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1101:Prefix local calls with this", Justification = "<保留中>")]
 [assembly: SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1124:Do not use regions", Justification = "<保留中>")]
