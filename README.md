@@ -15,7 +15,7 @@ Windows・Linux・Mac で使用できます。
     * 検索窓に「Y2.Dio」を入力すると「Y2.Dio84ReUbc.Core」が見つかりますので選択します。  
     * バージョンは「最新の安定版」にして「インストール」をクリックします。
 
-    ![Y2.Dio84ReUbc.Coreのインストール画面](nuget.png)
+    ![Y2.Dio84ReUbc.Coreのインストール画面](https://cdn.y2c.co.jp/i2c-r/dio-8-4re-ubc/nuget.png)
 
 3. FTDI社のライブラリ（デバイスドライバ含む）を以下の各OSの手順にしたがってインストールします。
 
