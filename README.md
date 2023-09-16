@@ -15,15 +15,13 @@ Windows・Linux・Mac で使用できます。
     * 検索窓に「Y2.Dio」を入力すると「Y2.Dio84ReUbc.Core」が見つかりますので選択します。  
     * バージョンは「最新の安定版」にして「インストール」をクリックします。
 
-    ![Y2.Dio84ReUbc.Coreのインストール画面](https://cdn.y2c.co.jp/i2c-r/dio-8-4re-ubc/nuget.png)
-
 3. FTDI社のライブラリ（デバイスドライバ含む）を以下の各OSの手順にしたがってインストールします。
 
     （本製品は、USB-I2C変換にFTDI社のデバイス（FT4222H）を使用しているため必要です）  
 
     Windows 64bit
 
-    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library」をダウンロードして解凍します。  
+    * [FT4222Hの製品ページ](https://ftdichip.com/products/ft4222h/) の「Downloads」から「LibFT4222 Windows Library」をダウンロードして解凍します。  
     * ```LibFT4222-vx.x.x\imports\LibFT4222\lib\amd64\LibFT4222-64.dll``` をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
     * ```LibFT4222-64.dll``` を ```LibFT4222.dll``` に名前を変更します。  
 
@@ -31,41 +29,20 @@ Windows・Linux・Mac で使用できます。
 
     Windows 32bit
 
-    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Windows Library and Examples」をダウンロードして解凍します。  
+    * [FT4222Hの製品ページ](https://ftdichip.com/products/ft4222h/) の「Downloads」から「LibFT4222 Windows Library and Examples」をダウンロードして解凍します。  
     * ```LibFT4222-vx.x.x\imports\LibFT4222\lib\i386\LibFT4222.dll``` をアプリケーションの実行可能ファイルと同じディレクトリにコピーします。  
 
     （レジストリ登録やPATHで登録しても可）
 
     Linux
 
-    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 Linux Library and Examples」をダウンロードして解凍します。  
+    * [FT4222Hの製品ページ](https://ftdichip.com/products/ft4222h/) の「Downloads」から「LibFT4222 Linux Library and Examples」をダウンロードして解凍します。  
     * 管理者権限で ```install4222.sh``` を実行します。  
 
     Mac
 
-    * [D2XX Driversのダウンロード](https://www.ftdichip.com/Drivers/D2XX.htm) から ```libftd2xx.dylib``` をダウンロードして解凍します。  
-    * [FT4222Hの製品ページ](https://www.ftdichip.com/Products/ICs/FT4222H.html) から「LibFT4222 MAC OSX Library and Examples」をダウンロードして解凍します。  
-    * ターミナルで以下のコマンドを実行します。  
-
-        ```bash
-        # /usr/local/libディレクトリがなければ作成
-        $ sudo mkdir /usr/local/lib
-        # /usr/local/includeディレクトリがなければ作成
-        $ sudo mkdir /usr/local/include
-        # libftd2xx.1.4.16.dylibが解凍されたパスに移動してから
-        # ファイルをコピー
-        $ sudo cp libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.1.4.16.dylib
-        # シンボリックリンクを作成
-        $ sudo ln -sf /usr/local/lib/libftd2xx.1.4.16.dylib /usr/local/lib/libftd2xx.dylib
-        # libft4222.1.4.4.14.dylibが解凍されたパスに移動してから
-        # ファイルをコピー
-        $ sudo cp libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.1.4.4.14.dylib
-        # シンボリックリンクを作成
-        $ sudo ln -sf /usr/local/lib/libft4222.1.4.4.14.dylib /usr/local/lib/libft4222.dylib
-        # ファイルをコピー
-        $ sudo cp boost_libs/libboost_system.dylib /usr/local/lib/libboost_system.dylib
-        $ sudo cp boost_libs/libboost_thread-mt.dylib /usr/local/lib/libboost_thread-mt.dylib
-        ```
+    * [D2XX Driversのダウンロード](https://ftdichip.com/drivers/d2xx-drivers/) から「D2XX Drives」をダウンロードしてインストールします。  
+    * [FT4222Hの製品ページ](https://ftdichip.com/products/ft4222h/) の「Downloads」から「LibFT4222 MAC OSX Library and Examples」をダウンロードして解凍します。  
 
 ## 使用方法
 
